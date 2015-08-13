@@ -23,6 +23,9 @@ function browser() {
     if (agent.search('like Gecko') > 0) {
         return 'IE11';
     }
+    if (agent.search('Edge') > 0) {
+        return 'Edge';
+    }
     if (agent.search('MSIE') > 0) {
         return 'IE';
     }
