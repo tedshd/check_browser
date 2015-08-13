@@ -8,6 +8,10 @@
 
     function browser($value='')
     {
+	if ( ! isset($_SERVER['HTTP_USER_AGENT'])) {
+	   return 'unknown browser';
+	}	
+
         $agent = $_SERVER['HTTP_USER_AGENT'];
         if (strpos($agent, 'Edge') > 0) {
             return 'Edge';
