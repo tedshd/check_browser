@@ -9,6 +9,9 @@
     function browser($value='')
     {
         $agent = $_SERVER['HTTP_USER_AGENT'];
+        if (strpos($agent, 'Edge') > 0) {
+            return 'Edge';
+        }
         if (strpos($agent, 'OPR') > 0) {
             return 'Opera';
         }
@@ -38,9 +41,6 @@
         }
         if (strpos($agent, 'like Gecko') > 0) {
             return 'IE11';
-        }
-        if (strpos($agent, 'Edge') > 0) {
-            return 'Edge';
         }
         if (strpos($agent, 'MSIE') > 0) {
             return 'IE';
