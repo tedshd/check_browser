@@ -8,6 +8,21 @@
 
 function browser() {
     var agent = navigator.userAgent;
+    if (agent.search('OPR') > 0) {
+        return 'Opera';
+    }
+    if (agent.search('Opera') > 0) {
+        return 'Opera';
+    }
+    if (agent.search('Firefox') > 0) {
+        return 'Firefox';
+    }
+    if (agent.search('Chrome') > 0) {
+        return 'Chrome';
+    }
+    if (agent.search('Safari') > 0) {
+        return 'Safari';
+    }
     if (agent.search('MSIE 7') > 0) {
         return 'IE7';
     }
@@ -28,21 +43,6 @@ function browser() {
     }
     if (agent.search('MSIE') > 0) {
         return 'IE';
-    }
-    if (agent.search('OPR') > 0) {
-        return 'Opera';
-    }
-    if (agent.search('Opera') > 0) {
-        return 'Opera';
-    }
-    if (agent.search('Firefox') > 0) {
-        return 'Firefox';
-    }
-    if (agent.search('Chrome') > 0) {
-        return 'Chrome';
-    }
-    if (agent.search('Safari') > 0) {
-        return 'Safari';
     }
     return 'unknown browser';
 }
