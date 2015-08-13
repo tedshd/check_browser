@@ -8,6 +8,9 @@
 
 function browser() {
     var agent = navigator.userAgent;
+    if (agent.search('Edge') > 0) {
+        return 'Edge';
+    }
     if (agent.search('OPR') > 0) {
         return 'Opera';
     }
@@ -37,9 +40,6 @@ function browser() {
     }
     if (agent.search('like Gecko') > 0) {
         return 'IE11';
-    }
-    if (agent.search('Edge') > 0) {
-        return 'Edge';
     }
     if (agent.search('MSIE') > 0) {
         return 'IE';
