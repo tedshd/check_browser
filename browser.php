@@ -10,7 +10,7 @@
     {
 	if ( ! isset($_SERVER['HTTP_USER_AGENT'])) {
 	   return 'unknown browser';
-	}	
+	}
 
         $agent = $_SERVER['HTTP_USER_AGENT'];
         if (strpos($agent, 'Edge') > 0) {
@@ -26,6 +26,10 @@
             return 'Firefox';
         }
         if (strpos($agent, 'Chrome') > 0) {
+            return 'Chrome';
+        }
+        // check iOS chrome
+        if(strpos($agent, 'CriOS') > 0 && preg_match('/iphone|ipod|ipad/i', $agent)) {
             return 'Chrome';
         }
         if (strpos($agent, 'Safari') > 0) {

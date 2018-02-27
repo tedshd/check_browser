@@ -23,6 +23,10 @@ function browser() {
     if (agent.search('Chrome') > 0) {
         return 'Chrome';
     }
+    // check iOS chrome
+    if(/CriOS/i.test(agent) && /iphone|ipod|ipad/i.test(agent)) {
+        return 'Chrome';
+    }
     if (agent.search('Safari') > 0) {
         return 'Safari';
     }
