@@ -7,46 +7,72 @@
  */
 
 function browser() {
-    var agent = navigator.userAgent;
-    if (agent.search('Edge') > 0) {
-        return 'Edge';
+    var _that = this,
+        currentBrowser = 'unknown browser',
+        ua = navigator.userAgent,
+        agentArray = [
+            {
+                agent: ua.search('Edge'),
+                browser: 'Edge'
+            },
+            {
+                agent: ua.search('OPR'),
+                browser: 'Opera'
+            },
+            {
+                agent: ua.search('Opera'),
+                browser: 'Opera'
+            },
+            {
+                agent: ua.search('Firefox'),
+                browser: 'Firefox'
+            },
+            {
+                agent: ua.search('Chrome'),
+                browser: 'Chrome'
+            },
+            {
+                agent: /CriOS/i.test(ua) && /iphone|ipod|ipad/i.test(ua), // check iOS chrome
+                browser: 'Chrome'
+            },
+            {
+                agent: ua.search('Safari'),
+                browser: 'Safari'
+            },
+            {
+                agent: ua.search('MSIE 7'),
+                browser: 'IE7'
+            },
+            {
+                agent: ua.search('MSIE 8'),
+                browser: 'IE8'
+            },
+            {
+                agent: ua.search('MSIE 9'),
+                browser: 'IE9'
+            },
+            {
+                agent: ua.search('MSIE 10'),
+                browser: 'IE10'
+            },
+            {
+                agent: ua.search('like Gecko'),
+                browser: 'IE11'
+            },
+            {
+                agent: ua.search('MSIE'),
+                browser: 'IE'
+            }
+        ];
+    for (var i = 0; i < agentArray.length; i++) {
+        _that[agentArray[i].browser.toLowerCase()] = false;
     }
-    if (agent.search('OPR') > 0) {
-        return 'Opera';
+    for (var j = 0; j < agentArray.length; j++) {
+        if (agentArray[j].agent > 0 || agentArray[j].agent === true) {
+            _that[agentArray[j].browser.toLowerCase()] = true;
+            currentBrowser = agentArray[j].browser;
+            break;
+        }
     }
-    if (agent.search('Opera') > 0) {
-        return 'Opera';
-    }
-    if (agent.search('Firefox') > 0) {
-        return 'Firefox';
-    }
-    if (agent.search('Chrome') > 0) {
-        return 'Chrome';
-    }
-    // check iOS chrome
-    if(/CriOS/i.test(agent) && /iphone|ipod|ipad/i.test(agent)) {
-        return 'Chrome';
-    }
-    if (agent.search('Safari') > 0) {
-        return 'Safari';
-    }
-    if (agent.search('MSIE 7') > 0) {
-        return 'IE7';
-    }
-    if (agent.search('MSIE 8') > 0) {
-        return 'IE8';
-    }
-    if (agent.search('MSIE 9') > 0) {
-        return 'IE9';
-    }
-    if (agent.search('MSIE 10') > 0) {
-        return 'IE10';
-    }
-    if (agent.search('like Gecko') > 0) {
-        return 'IE11';
-    }
-    if (agent.search('MSIE') > 0) {
-        return 'IE';
-    }
-    return 'unknown browser';
+    return currentBrowser;
 }
